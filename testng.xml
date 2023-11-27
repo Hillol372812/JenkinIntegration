@@ -5,7 +5,7 @@
 
   <test name="Test">
     <classes>
-      <class name="Test.ExtendReprt"> 
+      <class name="Test.ExtendReprtTest"> 
       </class>
     </classes>
   </test>  

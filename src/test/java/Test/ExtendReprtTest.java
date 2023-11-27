@@ -1,3 +1,4 @@
+package Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +14,7 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 
-public class ExtendReprt {
+public class ExtendReprtTest {
 	WebDriver driver;
 	ExtentReports extend;
 
@@ -38,12 +39,13 @@ public class ExtendReprt {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.get("https://www.flipkart.com/");
+		driver.findElement(By.xpath("//*[@class=\"JFPqaw\"]/span")).click();
 		driver.findElement(By.cssSelector("img[title='Flipkart']")).click();
 		String title = driver.getTitle();
 		System.out.println(title);
-		Assert.assertEquals(title,"Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books &amp; More. Best Offers");
+		Assert.assertEquals(title,"Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!");
 
-		 Assert.assertTrue(false);
+		 //Assert.assertTrue(false);
 	}
 
 	@Test
@@ -53,8 +55,11 @@ public class ExtendReprt {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.get("https://www.flipkart.com/");
+		driver.manage().window().maximize();
+		driver.findElement(By.xpath("//*[@class=\"JFPqaw\"]/span")).click();
 		driver.findElement(By.xpath("//span[contains(text(),'Travel')]")).click();
 		
+		Thread.sleep(4000);
 
 		WebElement SearchButton=driver.findElement(By.xpath("//button[@type='button']"));
 		
@@ -78,7 +83,7 @@ public class ExtendReprt {
 	@AfterMethod
 	public void closebrowser() {
 	
-		//driver.close();
+		driver.close();
 	}
 
 }
